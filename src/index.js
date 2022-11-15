@@ -14,18 +14,6 @@ function findUser(username) {
   return users.find((user) => user.username === username)
 }
 
-function verifyUuidTodo(request, response, next) {
-  const { id } = request.params;
-  const { user } = request;
-
-  const findTask = user.todos.find((task) => task.id === id);
-
-  if (!findTask) return response.status(404).json({ error: 'Task not found!' });
-
-  request.task = findTask;
-  next();
-}
-
 function checksExistsUserAccount(request, response, next) {
   const { username } = request?.headers
 
